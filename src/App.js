@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Booster from './components/booster/booster';
+import Card from './components/card/card';
 
 function App() {
   const [cards, setCards] = useState([]);
   const [isBoosterOpen, setIsBoosterOpen] = useState(false);
 
-  // Fonction pour ouvrir le booster et récupérer les cartes
+  // Fonction pour ouvrir le booster et récupérer les cartes via l'API
   async function openBooster() {
     setIsBoosterOpen(true);
     const response = await fetch('https://api.magicthegathering.io/v1/cards?random=true&pageSize=6');
@@ -13,13 +15,13 @@ function App() {
     setCards(data.cards);
   }
 
-  // Fonction pour revenir à la page de tirage de booster
+  // Fonction pour réinitialiser l'état et revenir à la page de tirage de booster
   function resetBooster() {
     setIsBoosterOpen(false);
     setCards([]);
   }
 
-  // Animation en cascade pour les cartes
+  // Effet pour animer les cartes en cascade
   useEffect(() => {
     if (cards.length) {
       cards.forEach((_, index) => {
@@ -33,22 +35,12 @@ function App() {
   return (
     <div className="App">
       {!isBoosterOpen ? (
-        <div id="booster" onClick={openBooster}>Booster Pack</div>
+        <Booster openBooster={openBooster} />
       ) : (
         <div id="cards-container">
           {cards.map((card, index) => (
-            <div key={index} className="card">
-              <div className="card-image">
-                <img src={card.imageUrl} alt={card.name} />
-              </div>
-              <div className="card-details">
-                <h3>{card.name}</h3>
-                <p>{card.text || "No description available."}</p>
-                <p><strong>Artist:</strong> {card.artist}</p>
-              </div>
-            </div>
+            <Card key={index} card={card} />
           ))}
-          {/* Bouton de retour */}
           <button onClick={resetBooster} className="reset-button">Retour au tirage de booster</button>
         </div>
       )}

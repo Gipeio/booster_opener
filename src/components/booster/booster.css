@@ -1,0 +1,12 @@
+#booster {
+    width: 200px;
+    height: 100px;
+    background-color: gray;
+    margin: 50px auto;
+    cursor: pointer;
+    text-align: center;
+    padding-top: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
