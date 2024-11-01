@@ -1,38 +1,72 @@
-.App {
+/* Style du booster */
+#booster {
+  width: 200px;
+  height: 100px;
+  background-color: gray;
+  margin: 50px auto;
+  cursor: pointer;
   text-align: center;
+  padding-top: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Conteneur principal pour les cartes */
+#cards-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: auto; /* Permet le défilement vertical */
+  height: auto;
+  scroll-snap-type: y mandatory; /* Effet de scroll snapping */
+}
+
+/* Style de chaque carte */
+.card {
+  display: flex;
+  align-items: center;
+  min-width: 100%; /* Prend toute la largeur de la fenêtre */
+  min-height: 35vh; /* Ajuster ici pour contrôler la hauteur minimale de chaque carte */
+  max-height: 50vh; /* Limite la hauteur maximale en cas d'écran très grand */
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Image de la carte */
+.card-image img {
+  width: 100%;       /* Ajuste la largeur au conteneur */
+  height: 100%;      /* Ajuste la hauteur au conteneur */
+  object-fit: contain; /* Affiche l'image en entier sans la rogner */
+  padding: 10px;     /* Optionnel : Ajoute un peu d’espace autour de l’image */
+}
+
+
+/* Détails de la carte */
+.card-details {
+  width: 50vw;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.reset-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  font-size: 16px;
   color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.reset-button:hover {
+  background-color: #0056b3;
 }
