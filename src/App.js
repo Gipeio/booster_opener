@@ -65,11 +65,11 @@ function App() {
 
       {selectedCard && (
         <div className="modal" onClick={closeCardModal}>
-          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <span className="close-button" onClick={closeCardModal}>&times;</span>
+          <div className="modal-content">
             <img src={selectedCard.imageUrl} alt={selectedCard.name} className="modal-image" />
           </div>
         </div>
+
       )}
     </div>
   );
