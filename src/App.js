@@ -6,13 +6,21 @@ import Card from './components/card/card';
 function App() {
   const [cards, setCards] = useState([]);
   const [isBoosterOpen, setIsBoosterOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState(null); // État pour la carte sélectionnée
 
   // Fonction pour ouvrir le booster et récupérer les cartes via l'API
   async function openBooster() {
     setIsBoosterOpen(true);
-    const response = await fetch('https://api.magicthegathering.io/v1/cards?random=true&pageSize=6');
-    const data = await response.json();
-    setCards(data.cards);
+    let cardsWithImages = [];
+    
+    while (cardsWithImages.length < 6) {
+      const response = await fetch('https://api.magicthegathering.io/v1/cards?random=true&pageSize=24');
+      const data = await response.json();
+      const filteredCards = data.cards.filter(card => card.imageUrl);
+      cardsWithImages = [...cardsWithImages, ...filteredCards].slice(0, 6);
+    }
+  
+    setCards(cardsWithImages);
   }
 
   // Fonction pour réinitialiser l'état et revenir à la page de tirage de booster
@@ -32,6 +40,16 @@ function App() {
     }
   }, [cards]);
 
+  // Fonction pour ouvrir la modal de la carte sélectionnée
+  function openCardModal(card) {
+    setSelectedCard(card);
+  }
+
+  // Fonction pour fermer la modal
+  function closeCardModal() {
+    setSelectedCard(null);
+  }
+
   return (
     <div className="App">
       {!isBoosterOpen ? (
@@ -39,9 +57,18 @@ function App() {
       ) : (
         <div id="cards-container">
           {cards.map((card, index) => (
-            <Card key={index} card={card} />
+            <Card key={index} card={card} onClick={() => openCardModal(card)} />
           ))}
           <button onClick={resetBooster} className="reset-button">Retour au tirage de booster</button>
+        </div>
+      )}
+
+      {selectedCard && (
+        <div className="modal" onClick={closeCardModal}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <span className="close-button" onClick={closeCardModal}>&times;</span>
+            <img src={selectedCard.imageUrl} alt={selectedCard.name} className="modal-image" />
+          </div>
         </div>
       )}
     </div>
