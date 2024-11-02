@@ -1,29 +1,46 @@
+/* Style de chaque carte */
 .card {
-    display: flex;
-    align-items: center;
-    min-width: 100%;
-    min-height: 35vh;
-    max-height: 50vh;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    overflow: hidden;
-    scroll-snap-align: start;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  flex: 1 1 30%; /* Par défaut, chaque carte occupe environ 30% de la largeur */
+  max-width: 325px; /* Limite la largeur des cartes pour éviter qu'elles soient trop grandes */
+  min-width: 150px; /* Largeur minimale pour les petits écrans */
+  margin: auto; /* Centre la carte dans sa colonne */
+  box-sizing: border-box; /* Inclut le padding dans la largeur */
+}
+
+/* Media query pour les écrans de taille moyenne à grande */
+@media (min-width: 768px) {
+  .card {
+    flex: 1 1 30%; /* Environ 30% de largeur pour 3 colonnes */
   }
-  
-  .card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 10px;
+}
+
+/* Media query pour les petits écrans (ex. : téléphone) */
+@media (max-width: 768px) {
+  .card {
+    flex: 1 1 45%; /* Chaque carte occupe environ 45% de la largeur sur mobile */
   }
-  
-  .card-details {
-    width: 50vw;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
+}
+
+/* Changer le curseur au survol d'une carte */
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+/* Conteneur de l'image */
+.card-image {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image de la carte */
+.card-image img {
+  width: 100%; /* Adapte l'image à la largeur du conteneur */
+  height: auto; /* Conserve le ratio de l'image */
+  object-fit: contain; /* Ajuste l'image sans la rogner */
+  border-radius: 10px;
+}

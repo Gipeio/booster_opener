@@ -14,46 +14,17 @@
 /* Conteneur principal pour les cartes */
 #cards-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: auto; /* Permet le défilement vertical */
-  height: auto;
-  scroll-snap-type: y mandatory; /* Effet de scroll snapping */
-}
-
-/* Style de chaque carte */
-.card {
-  display: flex;
-  align-items: center;
-  min-width: 100%; /* Prend toute la largeur de la fenêtre */
-  min-height: 35vh; /* Ajuster ici pour contrôler la hauteur minimale de chaque carte */
-  max-height: 50vh; /* Limite la hauteur maximale en cas d'écran très grand */
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  border-radius: 10px;
-  overflow: hidden;
-  scroll-snap-align: start;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Image de la carte */
-.card-image img {
-  width: 100%;       /* Ajuste la largeur au conteneur */
-  height: 100%;      /* Ajuste la hauteur au conteneur */
-  object-fit: contain; /* Affiche l'image en entier sans la rogner */
-  padding: 10px;     /* Optionnel : Ajoute un peu d’espace autour de l’image */
-}
-
-
-/* Détails de la carte */
-.card-details {
-  width: 50vw;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 10px; /* Espace entre les cartes */
+  padding-left: 300px;
+  padding-right: 300px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
+
+/* Style du bouton reset */
 .reset-button {
   display: block;
   margin: 20px auto;
@@ -69,13 +40,6 @@
 
 .reset-button:hover {
   background-color: #0056b3;
-}
-
-/* Changer le curseur au survol d'une carte */
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.05); /* Légère mise en avant au survol */
-  transition: transform 0.3s ease;
 }
 
 /* Styles pour la modal */
@@ -96,7 +60,7 @@
   position: relative;
   width: 90%;
   height: 90%;
-  max-width: 1000px; /* Limite de taille maximale pour grands écrans */
+  max-width: 1000px;
   max-height: 90%;
   display: flex;
   justify-content: center;
@@ -107,14 +71,5 @@
   width: 50%;
   height: auto;
   max-height: 75%;
-  border-radius: 8px; /* Coins arrondis pour l'image */
-}
-
-.close-button {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  font-size: 32px;
-  color: white;
-  cursor: pointer;
+  border-radius: 8px;
 }
