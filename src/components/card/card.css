@@ -1,13 +1,16 @@
 /* Style de chaque carte */
 .card {
-  width: 18vw; 
-  margin: auto;
-  padding: 1rem;
+  width: 20%;
+  height: 50%;
+  padding: 1rem ;
   font-size: 1rem;
   box-sizing: border-box;
+  overflow: hidden;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-
 /* Changer le curseur au survol d'une carte */
 .card:hover {
   cursor: pointer;
@@ -18,15 +21,18 @@
 /* Conteneur de l'image dans la carte */
 .card-image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: inherit;
 }
 
+/* Image à l'intérieur de la carte */
 .card-image img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
-  border-radius: 10px;
+  height: 100%;
+  object-fit: fill; /* Étire l'image pour qu'elle prenne toute la taille de .card */
+  border-radius: inherit;
 }
