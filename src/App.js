@@ -55,12 +55,14 @@ function App() {
       {!isBoosterOpen ? (
         <Booster openBooster={openBooster} />
       ) : (
-        <div id="cards-container">
-          {cards.map((card, index) => (
-            <Card key={index} card={card} onClick={() => openCardModal(card)} />
-          ))}
+        <>
+          <div id="cards-container">
+            {cards.map((card, index) => (
+              <Card key={index} card={card} onClick={() => openCardModal(card)} />
+            ))}
+          </div>
           <button onClick={resetBooster} className="reset-button">Retour au tirage de booster</button>
-        </div>
+        </>
       )}
 
       {selectedCard && (
