@@ -36,3 +36,13 @@
   object-fit: fill; /* Étire l'image pour qu'elle prenne toute la taille de .card */
   border-radius: inherit;
 }
+
+
+
+@media (max-width: 768px) {
+  .card {
+    width: 35vw;
+    height: 30vh;
+    padding-top: 30px; /* Teste sans padding pour voir si cela corrige l’espace */
+  }
+}

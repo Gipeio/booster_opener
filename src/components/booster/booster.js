@@ -3,9 +3,7 @@ import './booster.css';
 
 function Booster({ openBooster }) {
   return (
-    <div id="booster" onClick={openBooster}>
-      Booster Pack
-    </div>
+    <div id="booster" onClick={openBooster}></div>
   );
 }
 

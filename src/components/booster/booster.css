@@ -1,12 +1,23 @@
 /* Style du booster */
 #booster {
-  width: 25%; /* Utilisation de pourcentage pour l’adapter au conteneur */
-  height: 25%;
+  width: 25%;
+  height: 50%;
   background-color: gray;
-  margin: 50px auto;
   cursor: pointer;
-  text-align: center;
   padding-top: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+  /* Centrage sur l'écran */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centre parfaitement le booster */
+}
+
+@media (max-width: 768px) {
+  #booster {
+    width: 60%; /* Adapte la largeur pour les petits écrans */
+    height: 30%; /* Adapte la hauteur pour les petits écrans */
+  }
 }
