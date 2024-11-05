@@ -1,23 +1,64 @@
-/* Style du booster */
+.parallax-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #00ffff1e; /* Couleur bleu cyan */
+}
+
+.background-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  z-index: 1;
+  animation: fadeIn 1s ease forwards;
+}
+
+.layer1 {
+  background: url('/src/assets/league_of_legends___background_art_1_by_artursadlos_dcz5ldx-pre.jpg') no-repeat center center; /* ou le chemin que tu as choisi */
+  background-size: cover;
+  animation: slideIn 1.5s ease-out forwards;
+}
+
+.layer2 {
+  background: url('/src/assets/league_of_legends___background_art_1_by_artursadlos_dcz5ldx-pre.jpg') no-repeat center center;
+  background-size: cover;
+  animation: slideIn 2s ease-out forwards;
+}
+
 #booster {
   width: 25%;
   height: 50%;
   background-color: gray;
   cursor: pointer;
-  padding-top: 40px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-
-  /* Centrage sur l'écran */
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centre parfaitement le booster */
+  position: relative;
+  z-index: 10;
+  animation: fadeIn 1s ease 1s forwards; /* Arrive après l'arrière-plan */
 }
 
-@media (max-width: 768px) {
-  #booster {
-    width: 60%; /* Adapte la largeur pour les petits écrans */
-    height: 30%; /* Adapte la hauteur pour les petits écrans */
+/* Animation des couches pour un effet d’arrivée en parallaxe */
+@keyframes slideIn {
+  0% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }

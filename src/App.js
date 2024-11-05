@@ -34,7 +34,10 @@ function App() {
     if (cards.length) {
       cards.forEach((_, index) => {
         setTimeout(() => {
-          document.getElementsByClassName("card")[index].style.opacity = 1;
+          const cardElement = document.getElementsByClassName("card")[index];
+          if (cardElement) {
+            cardElement.style.opacity = 1;
+          }
         }, index * 300);
       });
     }

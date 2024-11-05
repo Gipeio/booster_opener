@@ -3,7 +3,11 @@ import './booster.css';
 
 function Booster({ openBooster }) {
   return (
-    <div id="booster" onClick={openBooster}></div>
+    <div className="parallax-container">
+      <div className="background-layer layer1"></div> 
+      <div className="background-layer layer2"></div> 
+      <div id="booster" onClick={openBooster}></div> 
+    </div>
   );
 }
 
